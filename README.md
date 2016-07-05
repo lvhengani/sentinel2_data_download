@@ -26,9 +26,9 @@ Go to the site http://sentinel-pds.s3-website.eu-central-1.amazonaws.com/.
 Scroll down to "Browse through data"
 On the map, select the granule of interest. Once a granule is selected, you will see its ID in a format '36JUS-2016-07-03' for a tile on the North of Swaziland.
 Copy the granule ID and give it as a commandline input as shown below. Please try to run without empty spaces.
-'''
+```
 python s2_file_downloader.py "/36/J/US/2016/7/3"
-'''
+```
 or
 ```
 python s2_file_downloader.py "36JUS - 2016-07-03"
