@@ -31,16 +31,10 @@ python s2_file_downloader.py "/36/J/US/2016/7/3"
 '''
 or
 ```
-python s2_file_downloader.py "36JUS 2016-07-03"
+python s2_file_downloader.py "36JUS - 2016-07-03"
 ```
 ## Requirements
 The script was written in python2.7 and only tested on an Ubuntu 14.04 system
 In the configration (config.py) file, edit save_l1c_dir, to redirect the saved file elsewhere. Currently set to save in the Download folder.
-
-## Future Updates  
-The following are the future updates:
-* Create a configuration file. This file will a python dictionary with granules of interest and directories where data should be saved.
-* Determine which granule are of interest.
-* determine when (time) to run the cronjob.
   
  
