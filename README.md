@@ -1,6 +1,6 @@
 # Sentinel 2 data download tools
 Tools for downloading sentinel 2 data. 
-With these tools, with a single click of a button one get a full sentinel 2 granule with metadata file to use to convert all bands of that granule to level 2 A (L2A) butom of atmosphere.  
+Using this tool, with a single click of a button, download a full sentinel 2 granule with metadata file of the scene.  
 
 ## Usage
 When using this make sure that the saving directory save_l1c_dir is set to a valid path in the config.py file. 
