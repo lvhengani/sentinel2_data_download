@@ -33,6 +33,11 @@ or
 ```
 python s2_file_downloader.py "36JUS - 2016-07-03"
 ```
+or download multiple granules between dates. The end_date input is optional, if not given, the script will use the current date.
+```
+python get_s2_granule_from_date.py 35JPL --start_date '2016-06-16'
+```
+
 ## Requirements
 1. The script was written in python2.7 and only tested on an Ubuntu 14.04 system
 2. In the configration (config.py) file, edit save_l1c_dir, to redirect the saved file elsewhere. Currently set to save in the Download folder.
