@@ -45,8 +45,7 @@ for sceneid in results:
 
     if download:
         s2api.download(username, password, sceneid, level1c_path)
-
-        scene_path  = os.psth.join(level1c_path, scene)
+        scene_path  = os.path.join(level1c_path, scene)
         scene_exists = os.path.exists(scene_path)
 
         if level2a_proc and scene_exists:
