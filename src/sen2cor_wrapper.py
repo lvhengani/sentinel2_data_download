@@ -64,7 +64,8 @@ def sen2cor(scene, resolution, delete_unzipped):
     # Run sen2cor, this depend on the mode
     if os.path.exists(unziped_scene_path):
         try:
-            os.system('{} "{}" --resolution={} --output_dir={}'.format(run_sen2cor, unziped_scene_path, resolution, level2a_path))
+            os.system('{} "{}" --resolution={} --output_dir={}'.format(run_sen2cor, unziped_scene_path,
+                                                                       resolution, level2a_path))
             print("Sen2Cor compeleteted running {} at {}m spatial resolution".format(scene, resolution))
         except:
             print("Something went wrong while sen2cor was running %s" %scene)
