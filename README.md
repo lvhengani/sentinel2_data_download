@@ -40,6 +40,6 @@ DOWNLOAD_PATH=./downloads
 
 # To Do List
 
-- Use ubuntu base image instead of python.3.6 image
+- Use ubuntu base image instead of python.3.6 image &#x2611;
+- Update to sen2cor 2.8 &#x2611;
 - Include a sqlite database
-- Update to sen2cor 2.8
