@@ -1,7 +1,7 @@
 # Sentinel 2 data download tools
 
-Tools for downloading sentinel 2 data and pre-processing to level-2A. 
-Using this tool, with a single click of a button, download a full sentinel 2 granule and also process it with sen2cor.
+Tools for downloading Sentinel-2 data and pre-processing to level-2A. 
+Using this tool to download a full Sentinel-2 granule and also process it with sen2cor.
 This tool was built using [sentinesat](https://sentinelsat.readthedocs.io) and [sen2cor](http://step.esa.int/main/third-party-plugins-2/sen2cor/).  
 
 ## Get the Repository
