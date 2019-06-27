@@ -1,0 +1,17 @@
+
+version: "3.7"
+services:
+  sentinel-download:
+    build:
+      context: ./dockerfile
+    container_name: sentinel-downloader  
+    environment:
+      - USERID=1000
+      - SCIHUBUSERNAME=$SCIHUBUSERNAME
+      - SCIHUBPASSWORD=$SCIHUBPASSWORD
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./src:/var/src:ro
+      - ./sentinel_data:/var/sentinel_data
+    #entrypoint: /docker-entrypoint.sh
+    working_dir: /var/src

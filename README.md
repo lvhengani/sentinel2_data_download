@@ -1,45 +1,41 @@
 # Sentinel 2 data download tools
-Tools for downloading sentinel 2 data. 
-Using this tool, with a single click of a button, download a full sentinel 2 granule with metadata file of the scene.  
+
+Tools for downloading sentinel 2 data and pre-processing to level-2A. 
+Using this tool, with a single click of a button, download a full sentinel 2 granule and also process it with sen2cor.
+This tool was built using [sentinesat](https://sentinelsat.readthedocs.io) and [sen2cor](http://step.esa.int/main/third-party-plugins-2/sen2cor/).  
+
+## Get the Repository
+
+~~~
+git clone https://github.com/lvhengani/sentinel2_data_download.git
+~~~
+
+## Configurartions
+
+Create a `.env` file and write your own scihub username and password. Without the username and password you can`t download.
+~~~
+SCIHUBUSERNAME=your_scihubusername
+SCIHUBPASSWORD=your_scihubpassword
+DOWNLOAD_PATH=./downloads
+~~~
+
+## Build the Docker Image
+
+~~~
+./build
+~~~
 
 ## Usage
-When using this make sure that the saving directory save_l1c_dir is set to a valid path in the config.py file. 
-To download using URL use the ```s2_file_downloader.py``` and to print usage information type: 
 
-
-```
-python s2_file_downloader.py -h
-
-```
-
-To run type.
-
-
-```
-python s2_file_downloader.py tile_info
--tile_info: is of the format '/utm_code/latitude_band/square/year/month/day/0/' or 'utm_codelatitude_bandsquare-year-month-day'  
-
-```
+~~~
+./search_scihub [sdate] [edate] [--download] [--level2a] [--orbit]
+~~~
 
 ## Example
-Go to the site http://sentinel-pds.s3-website.eu-central-1.amazonaws.com/.
-Scroll down to "Browse through data"
-On the map, select the granule of interest. Once a granule is selected, you will see its ID in a format '36JUS-2016-07-03' for a tile on the North of Swaziland.
-Copy the granule ID and give it as a commandline input as shown below. Please try to run without empty spaces.
-```
-python s2_file_downloader.py "/36/J/US/2016/7/3"
-```
-or
-```
-python s2_file_downloader.py "36JUS - 2016-07-03"
-```
-or download multiple granules between dates. The end_date input is optional, if not given, the script will use the current date.
-```
-python get_s2_granule_from_date.py 35JPL --start_date '2016-06-16'
-```
 
-## Requirements
-1. The script was written in python2.7 and only tested on an Ubuntu 14.04 system
-2. In the configration (config.py) file, edit save_l1c_dir, to redirect the saved file elsewhere. Currently set to save in the Download folder.
-  
- 
+
+# To Do List
+
+- Use ubuntu base image instead of python.3.6 image
+- Include a sqlite database
+- Update to sen2cor 2.8
