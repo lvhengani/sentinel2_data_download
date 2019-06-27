@@ -45,10 +45,10 @@ for sceneid in results:
 
     if download:
         s2api.download(username, password, sceneid, level1c_path)
+        scene = "".join([scene_title, ".zip"])
         scene_path  = os.path.join(level1c_path, scene)
         scene_exists = os.path.exists(scene_path)
 
         if level2a_proc and scene_exists:
-            scene = "".join([scene_title, ".zip"])
             delete_unzipped = True                        
             sen2cor.sen2cor(scene, resolution, delete_unzipped)
