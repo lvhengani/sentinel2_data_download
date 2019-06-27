@@ -16,7 +16,6 @@ Create a `.env` file and write your own scihub username and password. Without th
 ~~~
 SCIHUBUSERNAME=your_scihubusername
 SCIHUBPASSWORD=your_scihubpassword
-DOWNLOAD_PATH=./downloads
 ~~~
 
 ## Build the Docker Image
