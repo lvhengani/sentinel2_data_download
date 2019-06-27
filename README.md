@@ -36,6 +36,10 @@ SCIHUBPASSWORD=your_scihubpassword
 ./search_scihub 34HCH 20190601 20190627 --download -level2a_proc --clouds 20
 ~~~
 
+~~~
+./search_scihub 36JTT 20180903 20180905 -l2a -d
+~~~
+
 
 # To Do List
 
