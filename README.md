@@ -33,6 +33,10 @@ DOWNLOAD_PATH=./downloads
 
 ## Example
 
+~~~
+./search_scihub 34HCH 20190601 20190627 -d -l2a
+~~~
+
 
 # To Do List
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose run --rm sentinel-download python search_scihub.py
+docker-compose run --rm sentinel-download python search_scihub.py "$@"
