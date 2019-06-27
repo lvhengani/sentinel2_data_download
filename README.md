@@ -27,13 +27,13 @@ SCIHUBPASSWORD=your_scihubpassword
 ## Usage
 
 ~~~
-./search_scihub [tileid] [sdate] [edate] [--download] [--level2a] [--orbit]
+./search_scihub [-h] [--download] [--level2a_proc] [--clouds CLOUDS] tileid sdate edate
 ~~~
 
 ## Example
 
 ~~~
-./search_scihub 34HCH 20190601 20190627 -d -l2a
+./search_scihub 34HCH 20190601 20190627 --download -level2a_proc --clouds 20
 ~~~
 
 
