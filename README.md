@@ -27,7 +27,7 @@ SCIHUBPASSWORD=your_scihubpassword
 ## Usage
 
 ~~~
-./search_scihub [sdate] [edate] [--download] [--level2a] [--orbit]
+./search_scihub [tileid] [sdate] [edate] [--download] [--level2a] [--orbit]
 ~~~
 
 ## Example
