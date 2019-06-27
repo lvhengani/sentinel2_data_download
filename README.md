@@ -12,7 +12,7 @@ git clone https://github.com/lvhengani/sentinel2_data_download.git
 
 ## Configurartions
 
-Create a `.env` file and write your own scihub username and password. Without the username and password you can`t download.
+Create a `.env` file and write your own [scihub](http://scihub.copernicus.eu) username and password. Without the username and password you can`t download.
 ~~~
 SCIHUBUSERNAME=your_scihubusername
 SCIHUBPASSWORD=your_scihubpassword
