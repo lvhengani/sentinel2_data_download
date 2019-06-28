@@ -1,5 +1,6 @@
 import os
 import datetime
+import logging
 import argparse
 import sentinelsat_api as s2api
 import sen2cor_wrapper as sen2cor 
@@ -22,7 +23,8 @@ download = args.download
 level2a_proc = args.level2a_proc
 #orbit = args.orbit
 
-print(args)
+# logging
+
 
 # Search
 username = config.scihub_username

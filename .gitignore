@@ -1,2 +1,4 @@
 .env
 test
+sentinel_data/products
+src/product_generator.py

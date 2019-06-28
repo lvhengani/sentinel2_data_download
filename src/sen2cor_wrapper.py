@@ -66,7 +66,7 @@ def sen2cor(scene, resolution, delete_unzipped):
         try:
             os.system('{} "{}" --resolution={} --output_dir={}'.format(run_sen2cor, unziped_scene_path,
                                                                        resolution, level2a_path))
-            print("Sen2Cor compeleteted running {} at {}m spatial resolution".format(scene, resolution))
+            #print("Sen2Cor compeleted running {} at {}m spatial resolution".format(scene, resolution))
         except:
             print("Something went wrong while sen2cor was running %s" %scene)
     else:
