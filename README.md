@@ -62,5 +62,5 @@ Search a scene with tileid 34JTT, acquired between dates 2018-09-01 and 2019-09-
 # To Do List
 
 - Use ubuntu base image instead of python.3.6 image &#x2611;
-- Update to sen2cor 2.8 &#x2611;
+- Update to sen2cor 2.9 &#x2611;
 - Include a sqlite database for registering all downloaded files and for controlling the process chain
