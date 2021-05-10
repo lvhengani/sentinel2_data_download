@@ -10,7 +10,7 @@ def download(username, password, scene_id, directory_path, url=None):
     """A function for downloading scenes from Scihub with an API"""
     # connect to the API
     if url is None:
-        api = SentinelAPI(username, password)
+        api = SentinelAPI(username, password, api_url='https://apihub.copernicus.eu/apihub')
     else:
         api = SentinelAPI(username, password, api_url=url)
         
@@ -22,7 +22,7 @@ def search(username, password, tile_name, date1, date2, cloudpcnt, url=None):
     results = {}
     # connect to the API
     if url is None:
-        api = SentinelAPI(username, password)
+        api = SentinelAPI(username, password, api_url='https://apihub.copernicus.eu/apihub')
     else:
         api = SentinelAPI(username, password, api_url=url)
 
@@ -51,8 +51,14 @@ def test_scihub_connection(username, password, url=None):
     """Test connection"""
     # connect to the API
     if url is None:
-        api = SentinelAPI(username, password)
+        api = SentinelAPI(username, password, api_url='https://apihub.copernicus.eu/apihub')
     else:
         api = SentinelAPI(username, password, api_url=url)
 
-    print(api.api_url)    
+    print(api.api_url)
+    #print(dir(api))
+    #print(api.dhus_version)
+
+    
+if __name__ == "__main__":
+    test_scihub_connection(os.getenv("DHUS_USER"), os.getenv("DHUS_PASSWORD"))

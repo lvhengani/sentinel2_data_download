@@ -7,8 +7,8 @@ services:
     container_name: sentinel-downloader  
     environment:
       - USERID=1000
-      - SCIHUBUSERNAME=$SCIHUBUSERNAME
-      - SCIHUBPASSWORD=$SCIHUBPASSWORD
+      - DHUS_USER=$DHUS_USER
+      - DHUS_PASSWORD=$DHUS_PASSWORD
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./src:/var/src:ro

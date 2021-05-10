@@ -5,8 +5,8 @@ LABEL maintainer Lufuno Vhengani <lvhengani@csir.co.za>
 ARG DEBIAN_FRONTEND=noninteractive
 ARG GOSU_VERSION=1.10
 ARG GDAL_VERSION=2.1.4
-ARG SEN2COR_VERSION=02.08.00
-ARG SEN2COR_DIRECTORY=2.8.0
+ARG SEN2COR_VERSION=02.09.00
+ARG SEN2COR_DIRECTORY=2.9.0
 ARG SEN2COR="Sen2Cor-${SEN2COR_VERSION}-Linux64.run" 
 ADD requirements /requirements
 ADD docker-entrypoint.sh /docker-entrypoint.sh

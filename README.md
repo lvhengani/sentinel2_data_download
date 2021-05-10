@@ -16,8 +16,8 @@ git clone https://github.com/lvhengani/sentinel2_data_download.git
 
 Create a `.env` file and write your own [scihub](http://scihub.copernicus.eu) username and password. Without the username and password you can`t download.
 ~~~
-SCIHUBUSERNAME=your_scihubusername
-SCIHUBPASSWORD=your_scihubpassword
+DHUS_USER=your_scihubusername
+DHUS_PASSWORD=your_scihubpassword
 ~~~
 
 Inside the `sentinel_data` directory there are subdirectories `level1c` and `level2c`, files are downloaded into the former and sen2cor pre-processed data is stored into the  later. 

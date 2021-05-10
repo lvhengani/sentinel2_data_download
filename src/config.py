@@ -1,8 +1,8 @@
 import os
 
 # Scihub authentication 
-scihub_username = os.environ["SCIHUBUSERNAME"]
-scihub_password = os.environ["SCIHUBPASSWORD"]
+scihub_username = os.getenv("DHUS_USER")
+scihub_password = os.getenv("DHUS_PASSWORD")
 
 # paths and logfiles
 loglife = os.path.join("/var/logs","sentinel_download_log.log")
@@ -15,3 +15,6 @@ resolution = 20
 
 # maximum cloud threshod when searching for scenes
 cloudpcnt = 20
+
+# API endpoint
+endpoint = 'https://apihub.copernicus.eu/apihub'
