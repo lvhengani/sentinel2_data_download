@@ -43,7 +43,6 @@ def get_granule_info(granule):
 
     return granule_info
 
-
 def sen2cor(scene, resolution, delete_unzipped):
     level1c_path = config.level1c_path
     level2a_path = config.level2a_path

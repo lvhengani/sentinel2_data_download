@@ -11,10 +11,10 @@ level2a_path = os.path.join("/var/sentinel_data", 'level2a')
 unzipped_scenes = os.path.join("/var/sentinel_data", "unzipped")
 
 # default resolution when running sen2cor
-resolution = 20
+resolution = 20 # 10, 60
 
-# maximum cloud threshod when searching for scenes
-cloudpcnt = 20
+# maximum cloud threshold when searching for scenes
+cloudpcnt = 20 # min 0 and max 100
 
 # API endpoint
 endpoint = 'https://apihub.copernicus.eu/apihub'

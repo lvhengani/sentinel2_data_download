@@ -3,7 +3,7 @@ import sys
 import argparse
 import datetime
 import logging
-import sentinelsat_api as s2api
+from sentinelsat_wrapper import SentinelSatWrapper
 import sen2cor_wrapper as sen2cor 
 import config
 
@@ -20,30 +20,32 @@ def search_scihub(tileid, sdate, edate, download, level2a_proc):
     logging.info("Search started")
     
     # search
-    results = s2api.search(username, password, tileid, sdate, edate, cloudpcnt)
-    
+    s2api = SentinelSatWrapper(username, password)
+    results = s2api.search_by_tile(tileid, sdate, edate, cloudpcnt)
+
     logging.debug(f"Search found products \n{results}")
 
     # Download
     for sceneid in results:
-        print(sceneid, results[sceneid])
         relativeorbitnumber = results[sceneid]['relativeorbitnumber']
         scene_title = results[sceneid]["scene_title"]
         #orbit_flag = orbit == relativeorbitnumber
 
         if download:
             logging.info("Downloading products")
-            s2api.download(username, password, sceneid, level1c_path)
+            s2api.download(sceneid, level1c_path)
             scene = "".join([scene_title, ".zip"])
             scene_path  = os.path.join(level1c_path, scene)
             scene_exists = os.path.exists(scene_path)
+            logging.info("Downloading completed")
 
             if level2a_proc and scene_exists:
                 logging.info("Converting products to level-2")
                 delete_unzipped = True                        
                 sen2cor.sen2cor(scene, resolution, delete_unzipped)
+                logging.info("Sen2Cor completed")
                 
-    logging.info("Search completed!")
+    logging.info("Done!!")
 
 def main(tileid, sdate, edate, download, level2a_proc, loglevel="DEBUG"):
 
@@ -56,8 +58,8 @@ def main(tileid, sdate, edate, download, level2a_proc, loglevel="DEBUG"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('tileid', help="The identity (ID) of the tile i.e 34HCH")
-    parser.add_argument('sdate', help="The start date of the search in a form yyymmmdd, use date before scene acquisition")
-    parser.add_argument('edate', help="The end date of the search in a form yyymmmdd, use date after scene acquisition")
+    parser.add_argument('sdate', help="The start date of the search in a form yyyymmdd, use date before scene acquisition")
+    parser.add_argument('edate', help="The end date of the search in a form yyyymmdd, use date after scene acquisition")
     parser.add_argument('--download', '-d', help="Download the scene", action="store_true")
     parser.add_argument('--level2a_proc', '-l2a', help="Process scene to level2A using sen2cor", action="store_true")
     parser.add_argument('--clouds', '-cld', help="Maximum percent of clouds cover", default=config.cloudpcnt)
