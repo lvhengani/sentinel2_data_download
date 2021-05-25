@@ -15,7 +15,7 @@ This script was generated for running in a docker container.
 Author: L M Vhengani
 Date: 2019-06-26
 Purpose: Automatic processing of sen2cor version 2.5.5 on granules of interest.
-Dependencies: It runs on Python 3
+Dependencies: It runs on Python 3 and requires sentinelsat and sen2cor to be installed
 Inputs: It reads the s2granules.txt textfile with a list of granules of interest. The file must be in the same directory.
         On the commandline inputs include scene id (zipped) and the output spatial resolution of the output files. 
         The default output spatial resolution is 60, if not given as an input. 
@@ -43,44 +43,49 @@ def get_granule_info(granule):
 
     return granule_info
 
-def sen2cor(scene, resolution, delete_unzipped):
-    level1c_path = config.level1c_path
-    level2a_path = config.level2a_path
-    unzipped_scenes = config.unzipped_scenes
+class Sen2Cor:
+    def __init__(self, scene, resolution=20, delete_unzipped=True):        
+        self.scene = scene
+        self.resolution = resolution 
+        self.delete_unzipped = delete_unzipped
 
-    # Run sen2cor command
-    run_sen2cor = "/Sen2Cor-02.09.00-Linux64/bin/L2A_Process"
+    def convert_to_l2a(self):
+        level1c_path = config.level1c_path
+        level2a_path = config.level2a_path
+        unzipped_scenes = config.unzipped_scenes
 
-    # Process each granule in a scene, which is a granule of interest
-    zipped_scene_path = os.path.join(level1c_path, scene)
-    unziped_scene = scene[:-3]+'SAFE'
-    unziped_scene_path = os.path.join(unzipped_scenes, unziped_scene)
+        # Run sen2cor command
+        SEN2COR_VERSION = os.getenv("SEN2COR_VERSION")
+        run_sen2cor = f"/Sen2Cor-02.09.00-Linux64/bin/L2A_Process"
 
-    # Unzip
-    if os.path.exists(unziped_scene_path):
-        shutil.rmtree(unziped_scene_path)
+        # Process each granule in a scene, which is a granule of interest
+        zipped_scene_path = os.path.join(level1c_path, self.scene)
+        unziped_scene = self.scene[:-3]+'SAFE'
+        unziped_scene_path = os.path.join(unzipped_scenes, unziped_scene)
 
-    with zipfile.ZipFile(zipped_scene_path, "r") as zip_ref:
-        zip_ref.extractall(unzipped_scenes)
+        # Unzip
+        if os.path.exists(unziped_scene_path):
+            shutil.rmtree(unziped_scene_path)
 
-    # Run sen2cor, this depend on the mode
-    if os.path.exists(unziped_scene_path):
-        try:
-            os.system('{} "{}" --resolution={} --output_dir={}'.format(run_sen2cor, unziped_scene_path,
-                                                                       resolution, level2a_path))
-            #print("Sen2Cor compeleted running {} at {}m spatial resolution".format(scene, resolution))
-        except:
-            print("Something went wrong while sen2cor was running %s" % scene)
-    else:
-        print("The unziped folder {} does not exists, check if unzip is working".format(
-            unziped_scene))
-        exit()
+        with zipfile.ZipFile(zipped_scene_path, "r") as zip_ref:
+            zip_ref.extractall(unzipped_scenes)
 
-    # Assign all uniziped folderr to a user
-    os.system("chown -R 1000 {}/*".format(level2a_path))
+        # Run sen2cor, this depend on the mode
+        if os.path.exists(unziped_scene_path):
+            try:
+                os.system(f'{run_sen2cor} "{unziped_scene_path}" --resolution={self.resolution} --output_dir={level2a_path}')
+                logging.info(f"Sen2Cor compeleted running {self.scene} at {self.resolution}m spatial resolution")
+            except Exception as e:
+                logging.info(f"Something went wrong while sen2cor was running {self.scene}\n{e}")
+        else:
+            logging.info(f"The unziped folder {unziped_scene} does not exists, check if unzip is working")
+            exit()
 
-    if delete_unzipped:
-        shutil.rmtree(unziped_scene_path)
+        # Assign all uniziped folderr to a user
+        os.system("chown -R 1000 {}/*".format(level2a_path))
+
+        if self.delete_unzipped:
+            shutil.rmtree(unziped_scene_path)
 
 
 if __name__ == "__main__":
@@ -99,4 +104,5 @@ if __name__ == "__main__":
     resolution = args.resolution
     delete_unzipped = args.delete_unzipped
 
-    sen2cor(scene, resolution, delete_unzipped)
+    sen2cor = Sen2Cor(scene, resolution, delete_unzipped)
+    sen2cor.convert_to_l2a()
