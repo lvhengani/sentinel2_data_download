@@ -12,6 +12,6 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./src:/var/src:ro
-      - ./sentinel_data:/var/sentinel_data
+      - ./sentinel2_data:/var/sentinel2_data
     #entrypoint: /docker-entrypoint.sh
     working_dir: /var/src

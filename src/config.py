@@ -6,9 +6,9 @@ scihub_password = os.getenv("DHUS_PASSWORD")
 
 # paths and logfiles
 loglife = os.path.join("/var/logs","sentinel_download_log.log")
-level1c_path = os.path.join("/var/sentinel_data", 'level1c')
-level2a_path = os.path.join("/var/sentinel_data", 'level2a')
-unzipped_scenes = os.path.join("/var/sentinel_data", "unzipped")
+level1c_path = os.path.join("/var/sentinel2_data", 'level1c')
+level2a_path = os.path.join("/var/sentinel2_data", 'level2a')
+unzipped_scenes = os.path.join("/var/sentinel2_data", "unzipped")
 
 # default resolution when running sen2cor
 resolution = 20 # 10, 60

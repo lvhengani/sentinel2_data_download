@@ -10,7 +10,7 @@ from sen2cor_wrapper import Sen2Cor
 def search_scihub(sdate, edate, tileid, aoi, download, level2a_proc, cloudpcnt=20, resolution=20):
     "Search Scihub, download and convert to Leve-2A depending on options"
     # Search
-    sentinel_data_path = "/var/sentinel_data"
+    sentinel_data_path = "/var/sentinel2_data"
     username = os.getenv("DHUS_USER")
     password = os.getenv("DHUS_PASSWORD")
     level1c_path = os.path.join(sentinel_data_path, "level1c")
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     parser.add_argument('edate', help="The end date of the search in a form yyyymmdd, use date after scene acquisition")
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--tileid', '-t',help="The identity (ID) of the tile i.e 34HCH")
-    group.add_argument('--aoi', help="The area of intersest in wkt format")
+    group.add_argument('--aoi', '-aoi', help="The area of intersest in wkt format")
     parser.add_argument('--download', '-d', help="Download the scene", action="store_true")
     parser.add_argument('--level2a_proc', '-l2a', help="Process scene to level2A using sen2cor", action="store_true")
     parser.add_argument('--clouds', '-cld', help="Maximum percent of clouds cover", default=20)
