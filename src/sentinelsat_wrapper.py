@@ -55,7 +55,7 @@ class SentinelSatWrapper:
         self.api.download(scene_id, directory_path, True)
 
 if __name__ == "__main__":
-    s2 = SentinelSatWrapper('lvhengani', 'Aluwani12*')
+    s2 = SentinelSatWrapper(os.getenv('DHUS_USER'), os.getenv('DHUS_PASSWORD'))
     results = s2.search_by_tile('34HCH', '20210401', '20210430', 20) 
     #wkt = 'POLYGON((18.84897620825523 -33.42037795506848,20.029650964642173 -33.43523769197612,20.018355218855746 -34.42538216019411,18.82395539904375 -34.409960850871684,18.84897620825523 -33.42037795506848))'
     #results = s2.search_by_aoi(wkt, '20210401', '20210430', 20)
