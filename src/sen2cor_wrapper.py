@@ -56,7 +56,7 @@ class Sen2Cor:
 
         # Run sen2cor command
         SEN2COR_VERSION = os.getenv("SEN2COR_VERSION")
-        run_sen2cor = f"/Sen2Cor-02.09.00-Linux64/bin/L2A_Process"
+        run_sen2cor = f"/Sen2Cor-02.10.01-Linux64/bin/L2A_Process"
 
         # Process each granule in a scene, which is a granule of interest
         zipped_scene_path = os.path.join(level1c_path, self.scene)
